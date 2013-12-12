@@ -1,0 +1,8 @@
+config BR2_PACKAGE_BACKPORTS
+	bool "backports"
+	depends on BR2_LINUX_KERNEL
+	help
+		builds and installs backports, yo
+
+comment "backports needs kernel headers"
+	depends on !BR2_LINUX_KERNEL

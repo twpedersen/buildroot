@@ -247,6 +247,7 @@ source "package/metacity/Config.in"
 endmenu
 
 menu "Hardware handling"
+source "package/backports/Config.in"
 menu "Firmware"
 source "package/am33x-cm3/Config.in"
 source "package/b43-firmware/Config.in"

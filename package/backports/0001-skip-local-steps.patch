@@ -1,0 +1,33 @@
+From 65ef8dad972b0948c63c8dc2e466f80318c4215f Mon Sep 17 00:00:00 2001
+From: Thomas Pedersen <thomas@cozybit.com>
+Date: Wed, 11 Dec 2013 15:56:06 -0800
+Subject: [PATCH] skip local steps
+
+---
+ Makefile.real | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/Makefile.real b/Makefile.real
+index c09663c..ed0fc6b 100644
+--- a/Makefile.real
++++ b/Makefile.real
+@@ -87,16 +87,6 @@ install: modules
+ 	@$(MAKE) -C $(KLIB_BUILD) M=$(BACKPORT_PWD)			\
+ 		INSTALL_MOD_DIR=$(KMODDIR) $(KMODPATH_ARG)		\
+ 		modules_install
+-	@./scripts/blacklist.sh $(KLIB)/ $(KLIB)/$(KMODDIR)
+-	@./scripts/compress_modules.sh $(KLIB)/$(KMODDIR)
+-	@./scripts/check_depmod.sh
+-	@./scripts/backport_firmware_install.sh
+-	@/sbin/depmod -a
+-	@./scripts/update-initramfs.sh $(KLIB)
+-	@echo
+-	@echo Your backported driver modules should be installed now.
+-	@echo Reboot.
+-	@echo
+ 
+ .PHONY: modules_install
+ modules_install: install
+-- 
+1.8.4.3
+
